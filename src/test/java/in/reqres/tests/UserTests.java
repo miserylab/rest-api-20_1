@@ -1,6 +1,8 @@
 package in.reqres.tests;
 
 import in.reqres.models.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static in.reqres.specs.UserSpec.*;
@@ -11,14 +13,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class UserTests extends BaseTest{
 
     @Test
-    void successfulCreateUserTest() {
-        PostUserBodyModel createData = new PostUserBodyModel();
-        createData.setName("ardath.mcdermott");
-        createData.setJob("Assistant");
+    @Tag("remote")
+    @DisplayName("Successful Create User Test")
+     void successfulCreateUserTest() {
 
         PostUserResponseModel postUserResponse = step("Make request", () ->
                 given(userPostRequestSpec)
-                .body(createData)
+                .body(testData.createData)
                 .when()
                 .post("/users")
                 .then()
@@ -27,20 +28,19 @@ public class UserTests extends BaseTest{
         );
 
         step("check response", () -> {
-            assertEquals("ardath.mcdermott", postUserResponse.getName());
-            assertEquals("Assistant", postUserResponse.getJob());
+            assertEquals(testData.createData.getName(), postUserResponse.getName());
+            assertEquals(testData.createData.getJob(), postUserResponse.getJob());
         });
     }
 
     @Test
+    @Tag("remote")
+    @DisplayName("Successful Update User Test")
     void successfulUpdateUserTest() {
-        PostUserBodyModel updateData = new PostUserBodyModel();
-        updateData.setName("a.mcdermott");
-        updateData.setJob("Agent");
 
         PutUserResponseModel putUserResponse = step("Make request", () ->
                 given(userPutRequestSpec)
-                        .body(updateData)
+                        .body(testData.updateData)
                         .when()
                         .put("/users/" + testData.getUserId())
                         .then()
@@ -49,12 +49,14 @@ public class UserTests extends BaseTest{
         );
 
         step("check response", () -> {
-            assertEquals("a.mcdermott", putUserResponse.getName());
-            assertEquals("Agent", putUserResponse.getJob());
+            assertEquals(testData.updateData.getName(), putUserResponse.getName());
+            assertEquals(testData.updateData.getJob(), putUserResponse.getJob());
         });
     }
 
     @Test
+    @Tag("remote")
+    @DisplayName("Successful Get User Test")
     void successfulGetUserInfoTest() {
         GetUserResponseModel getUserResponse = step("Make request", () ->
                 given(userGetRequestSpec)
@@ -75,6 +77,8 @@ public class UserTests extends BaseTest{
     }
 
     @Test
+    @Tag("remote")
+    @DisplayName("User not found Test")
     void userNotFoundTest() {
         GetUserResponseModel getUserNotFound = step("Make request", () ->
                 given(userGetRequestSpec)
@@ -91,6 +95,8 @@ public class UserTests extends BaseTest{
     }
 
     @Test
+    @Tag("remote")
+    @DisplayName("Successful Get User List on Page Test")
     void successfulUsersListOnPageTest() {
         GetUserListOnPageResponseModel getUsersListOnPageResponse = step("Make request", () ->
                 given(userGetRequestSpec)

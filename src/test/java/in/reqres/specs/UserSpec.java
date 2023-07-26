@@ -18,9 +18,7 @@ public class UserSpec {
             .log().method()
             .log().body()
             .filter(withCustomTemplates())
-            .contentType(JSON)
-            .baseUri("https://reqres.in")
-            .basePath("/api");
+            .contentType(JSON);
 
     public static ResponseSpecification userPostResponseSpec = new ResponseSpecBuilder()
             .log(STATUS)
@@ -36,9 +34,7 @@ public class UserSpec {
             .log().method()
             .log().body()
             .filter(withCustomTemplates())
-            .contentType(JSON)
-            .baseUri("https://reqres.in")
-            .basePath("/api");
+            .contentType(JSON);
 
     public static ResponseSpecification userPutResponseSpec = new ResponseSpecBuilder()
             .log(STATUS)
@@ -53,9 +49,7 @@ public class UserSpec {
             .log().method()
             .log().body()
             .filter(withCustomTemplates())
-            .contentType(JSON)
-            .baseUri("https://reqres.in")
-            .basePath("/api");
+            .contentType(JSON);
 
     public static ResponseSpecification userGetResponseSpec = new ResponseSpecBuilder()
             .log(STATUS)

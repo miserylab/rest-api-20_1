@@ -2,9 +2,21 @@ package in.reqres.utils;
 
 import java.util.HashMap;
 import java.util.Map;
+import in.reqres.models.*;
 
 public class TestData {
+    RandomUtils random = new RandomUtils();
+    public PostUserBodyModel createData = new PostUserBodyModel();
+    {
+        createData.setName(random.getRandomUserName());
+        createData.setJob(random.getRandomUserName());
+    }
 
+    public PostUserBodyModel updateData = new PostUserBodyModel();
+    {
+        updateData.setName(random.getRandomUserName());
+        updateData.setJob(random.getRandomJob());
+    }
 
 
     public String getUserId() {
