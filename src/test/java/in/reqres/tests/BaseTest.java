@@ -9,7 +9,7 @@ public class BaseTest {
 
     @BeforeAll
     static void beforeAll() {
-        RestAssured.baseURI = System.getProperty("BaseUri","https://reqres.in/");
+        RestAssured.baseURI = System.getProperty("BaseUri","https://reqres.in");
         RestAssured.basePath = System.getProperty("BasePath","/api");
     }
 }

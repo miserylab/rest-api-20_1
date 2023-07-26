@@ -18,7 +18,6 @@ public class TestData {
         updateData.setJob(random.getRandomJob());
     }
 
-
     public String getUserId() {
         return "2";
     }
@@ -47,11 +46,5 @@ public class TestData {
         user_list_data.put("total", "12");
         user_list_data.put("total_pages", "2");
     }
-
-
-
-
-
-
 
 }
